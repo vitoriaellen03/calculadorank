@@ -1,21 +1,39 @@
-// /// Imprimir Imagem ///
+/// Imprimir Imagem ///
 $(document).ready(function () {
     $("#download").on("click", function () {
-        var element = $("#htmlContent");
+        var element = document.getElementById("htmlContent");
 
-        html2canvas(element, {
-            onrendered: function (canvas) {
-                var imageData = canvas.toDataURL("image/jpeg");
-                var newData = imageData.replace(/^data:image\/jpeg/, "data:application/octet-stream");
+        // Define a largura e altura desejadas para a imagem em pixels
+        var canvasWidth = 5000;
+        var canvasHeight = 5000;
+
+        // Cria um novo canvas com a resolução desejada
+        var canvas = document.createElement("canvas");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var context = canvas.getContext("2d");
+
+        // Usa a biblioteca html2canvas para renderizar o conteúdo no canvas
+        html2canvas(element, { scale: canvasWidth / element.offsetWidth })
+            .then(function (renderedCanvas) {
+                // Desenha a imagem renderizada no novo canvas
+                context.drawImage(renderedCanvas, 0, 0, canvasWidth, canvasHeight);
+
+                // Obtém a URL da imagem a partir do canvas
+                var imageData = canvas.toDataURL("image/jpeg", 1.0);
+
+                // Cria um link para baixar a imagem
                 var link = document.createElement("a");
                 link.setAttribute("download", "image.jpg");
-                link.setAttribute("href", newData);
+                link.setAttribute("href", imageData);
                 link.click();
-            }
-        });
+            })
+            .catch(function (error) {
+                console.error("Erro ao renderizar a imagem:", error);
+            });
     });
 });
-///
+
 
 /// Mascara de Dinheiro
 $(function () {
@@ -445,3 +463,22 @@ function escreveripcell() {
     te12.style = "border: 2px solid #12c35b; background-color: white; border: 2px solid #12c35b; color: #12c35b;";
 
 }
+
+// // /// Imprimir Imagem ///
+// $(document).ready(function () {
+//     $("#download").on("click", function () {
+//         var element = $("#htmlContent");
+
+//         html2canvas(element, {
+//             onrendered: function (canvas) {
+//                 var imageData = canvas.toDataURL("image/jpeg");
+//                 var newData = imageData.replace(/^data:image\/jpeg/, "data:application/octet-stream");
+//                 var link = document.createElement("a");
+//                 link.setAttribute("download", "image.jpg");
+//                 link.setAttribute("href", newData);
+//                 link.click();
+//             }
+//         });
+//     });
+// });
+///
