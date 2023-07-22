@@ -5,9 +5,10 @@ var btn = document.getElementById('download');
 var html = document.getElementById('htmlContent');
 var dg = document.getElementById('digite');
 var dg2 = document.getElementById('digite2');
+var titulo = document.getElementById('titulo');
 
-var titulo = document.querySelector('th');
 var borda = document.querySelector('td');
+var nave = document.querySelector('nav');
 
 //debito
 var valorde1 = document.getElementById('valorde1');
@@ -54,75 +55,24 @@ var te10 = document.getElementById('te10');
 var te11 = document.getElementById('te11');
 var te12 = document.getElementById('te12');
 
-
-/// Carrega os codigos apos tudo ser carregado
-document.addEventListener('DOMContentLoaded', function () {
-    escreveripmaq();
-    escreveriplink();
+document.addEventListener("DOMContentLoaded", function () {
+    // Seu código aqui, incluindo a chamada da função escrevermp
     escreveripcell();
+    escreveriplink();
+    escreveripmaq();
+    escrevermp();
+});
+window.addEventListener("load", function () {
+    // Seu código aqui, incluindo a chamada da função escrevermp
+    escreveripcell();
+    escreveriplink();
+    escreveripmaq();
     escrevermp();
 });
 
-/// Imprimir Imagem ///
-$(document).ready(function () {
-    $("#download").on("click", function () {
-        var element = document.getElementById("htmlContent");
 
-        // Define a largura e altura desejadas para a imagem em pixels
-        var canvasWidth = 5900;
-        var canvasHeight = 7000;
-
-        // Calcula a escala com base na largura desejada do canvas e a largura do elemento
-        var scale = canvasWidth / element.offsetWidth;
-
-        // Cria um novo canvas com a resolução desejada
-        var canvas = document.createElement("canvas");
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
-        var context = canvas.getContext("2d");
-
-        // Usa a biblioteca html2canvas para renderizar o conteúdo no canvas
-        html2canvas(element, { scale: scale })
-            .then(function (renderedCanvas) {
-                // Desenha a imagem renderizada no novo canvas
-                context.drawImage(renderedCanvas, 0, 0, canvasWidth, canvasHeight);
-
-                // Obtém a URL da imagem a partir do canvas
-                var imageData = canvas.toDataURL("image/jpeg", 1.0);
-
-                // Cria um link para baixar a imagem
-                var link = document.createElement("a");
-                link.setAttribute("download", "image.jpg");
-                link.setAttribute("href", imageData);
-                link.click();
-            })
-            .catch(function (error) {
-                console.error("Erro ao renderizar a imagem:", error);
-            });
-    });
-});
-
-
-/// Mascara de Dinheiro
-$(function () {
-    $("#demo4").maskMoney();
-}) 
-
-/// Verifica o Input
-function verificarPreenchimento() {
-    var inputValor = document.getElementById("demo4").value.trim();
-    var buttonsDiv = document.getElementById("buttons_div");
-
-    if (inputValor !== "" && parseFloat(inputValor.replace(/[^\d.]/g, '')) > 0) {
-        buttonsDiv.style.display = "block";
-    } else {
-        buttonsDiv.style.display = "none";
-    }
-}
-
-
-    /// Escreve os Valores MERCADO PAGO ///
-    function escrevermp() {
+/// Escreve os Valores MERCADO PAGO ///
+function escrevermp() {
         const valorTexto = document.getElementById('demo4').value;
         const valorNumerico = parseFloat(valorTexto.replace(/[^\d]/g, '')) / 100;
 
@@ -154,64 +104,62 @@ function verificarPreenchimento() {
         document.getElementById('valorjuru11').innerHTML = "R$ " + (valorNumerico / 0.786).toFixed(2);
         document.getElementById('valorjuru12').innerHTML = "R$ " + (valorNumerico / 0.774).toFixed(2);
 
-        nav.style = "background-color: #009bdb;" // Nav bar
-        btn.style = "background-color: #009bdb;" // Botão Baixar
-        html.style = "background-color: #009bdb;" // Conteudo Da Planilha
-        titulo.style = "background-color: #009bdb;" // Titulo Da Planilha
-        opcao.style = "border: 2px solid #009bdb;" // Borda Calculadora
-        planilha.style = "border: 2px solid #009bdb;"// Borda da planilha
-        dg.style = "color: #009bdb;"
-        dg2.style = "color: #009bdb;"
+        nave.style = "background-color: #009bdb;"; // Nav bar
+        btn.style = "background-color: #009bdb;"; // Botão Baixar
+        html.style = "background-color: #009bdb;"; // Conteudo Da Planilha
+        titulo.style = "background-color: #009bdb;"; // Titulo Da Planilha
+        opcao.style = "border: 2px solid #009bdb;"; // Borda Calculadora
+        planilha.style = "border: 2px solid #009bdb;";// Borda da planilha
+        dg.style = "color: #009bdb;";
+        dg2.style = "color: #009bdb;";
 
 
         // Debito
-        valorde1.style = "background-color: #a2cff0; border: 2px solid #009bdb;"
-        valorde.style = "background-color: #a2cff0; border: 2px solid #009bdb;"
-        valordeb.style = "background-color: #a2cff0; border: 2px solid #009bdb;"
+        valorde1.style = "background-color: #a2cff0; border: 2px solid #009bdb;";
+        valorde.style = "background-color: #a2cff0; border: 2px solid #009bdb;";
+        valordeb.style = "background-color: #a2cff0; border: 2px solid #009bdb;";
 
         // Crédito
-        linha1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
 
-        linha13.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha14.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha15.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha16.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha17.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha18.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha19.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha20.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha21.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha22.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha23.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        linha24.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha13.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha14.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha15.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha16.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha17.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha18.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha19.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha20.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha21.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha22.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha23.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        linha24.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
 
-        te1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
-        te12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+        te12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
 
-    }
-
-
+}
 function escreveripmaq() {
     const valorTexto = document.getElementById('demo4').value;
     const valorNumerico = parseFloat(valorTexto.replace(/[^\d]/g, '')) / 100;
@@ -244,7 +192,7 @@ function escreveripmaq() {
     document.getElementById('valorjuru11').innerHTML = "R$ " +(valorNumerico / 0.8725).toFixed(2);
     document.getElementById('valorjuru12').innerHTML = "R$ " + (valorNumerico / 0.8659).toFixed(2);
     
-    nav.style = "background-color: #00dbbb;"; // Nav bar
+    nave.style = "background-color: #00dbbb;"; // Nav bar
     btn.style = "background-color: #00dbbb;"; // Botão Baixar
     html.style = "background-color: #00dbbb;"; // Conteudo Da Planilha
     titulo.style = "background-color: #00dbbb;"; // Titulo Da Planilha
@@ -299,7 +247,6 @@ function escreveripmaq() {
     te12.style = "border: 2px solid #00dbbb; background-color: white; color: #00dbbb;";
 
 }
-
 function escreveriplink() {
     const valorTexto = document.getElementById('demo4').value;
     const valorNumerico = parseFloat(valorTexto.replace(/[^\d]/g, '')) / 100;
@@ -332,7 +279,7 @@ function escreveriplink() {
     document.getElementById('valorjuru11').innerHTML = "R$ " +(valorNumerico / 0.841).toFixed(2);
     document.getElementById('valorjuru12').innerHTML = "R$ " + (valorNumerico / 0.833).toFixed(2);
     
-    nav.style = "background-color: #3f9622;"; // Nav bar
+    nave.style = "background-color: #3f9622;"; // Nav bar
     btn.style = "background-color: #3f9622;"; // Botão Baixar
     html.style = "background-color: #3f9622;"; // Conteudo Da Planilha
     titulo.style = "background-color: #3f9622;"; // Titulo Da Planilha
@@ -387,7 +334,6 @@ function escreveriplink() {
     te12.style = "border: 2px solid #3f9622; background-color: white; border: 2px solid #3f9622; color: #3f9622;";
 
 }
-
 function escreveripcell() {
     const valorTexto = document.getElementById('demo4').value;
     const valorNumerico = parseFloat(valorTexto.replace(/[^\d]/g, '')) / 100;
@@ -420,7 +366,7 @@ function escreveripcell() {
     document.getElementById('valorjuru11').innerHTML = "R$ " +(valorNumerico / 0.8725).toFixed(2);
     document.getElementById('valorjuru12').innerHTML = "R$ " + (valorNumerico / 0.8659).toFixed(2);
     
-    nav.style = "background-color: #12c35b;"; // Nav bar
+    nave.style = "background-color: #12c35b;"; // Nav bar
     btn.style = "background-color: #12c35b;"; // Botão Baixar
     html.style = "background-color: #12c35b;"; // Conteudo Da Planilha
     titulo.style = "background-color: #12c35b;"; // Titulo Da Planilha
@@ -474,7 +420,84 @@ function escreveripcell() {
     te11.style = "border: 2px solid #12c35b; background-color: white; border: 2px solid #12c35b; color: #12c35b;";
     te12.style = "border: 2px solid #12c35b; background-color: white; border: 2px solid #12c35b; color: #12c35b;";
 
+}
+
+
+
+// Verificação do Documento Carregado
+$(document).ready(function () {
+    // Mascara de Dinheiro
+    $("#demo4").maskMoney();
+
+    // Verifica o Input
+    verificarPreenchimento();
+
+    // Imprime a Imagem
+    $("#download").on("click", function () {
+        var element = document.getElementById("htmlContent");
+
+        // Define a largura e altura desejadas para a imagem em pixels
+        var canvasWidth = 5900;
+        var canvasHeight = 7000;
+
+        // Calcula a escala com base na largura desejada do canvas e a largura do elemento
+        var scale = canvasWidth / element.offsetWidth;
+
+        // Cria um novo canvas com a resolução desejada
+        var canvas = document.createElement("canvas");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var context = canvas.getContext("2d");
+
+        // Usa a biblioteca html2canvas para renderizar o conteúdo no canvas
+        html2canvas(element, { scale: scale })
+            .then(function (renderedCanvas) {
+                // Desenha a imagem renderizada no novo canvas
+                context.drawImage(renderedCanvas, 0, 0, canvasWidth, canvasHeight);
+
+                // Obtém a URL da imagem a partir do canvas
+                var imageData = canvas.toDataURL("image/jpeg", 1.0);
+
+                // Cria um link para baixar a imagem
+                var link = document.createElement("a");
+                link.setAttribute("download", "image.jpg");
+                link.setAttribute("href", imageData);
+                link.click();
+            })
+            .catch(function (error) {
+                console.error("Erro ao renderizar a imagem:", error);
+            });
+    });
+});
+
+// Função para verificar o preenchimento do input
+function verificarPreenchimento() {
+    var inputValor = document.getElementById("demo4").value.trim();
+    var buttonsDiv = document.getElementById("buttons_div");
+
+    if (inputValor !== "" && parseFloat(inputValor.replace(/[^\d.]/g, '')) > 0) {
+        buttonsDiv.style.display = "block";
+    } else {
+        buttonsDiv.style.display = "none";
     }
+}
+
+/// Mascara de Dinheiro
+$(function () {
+    $("#demo4").maskMoney();
+})
+
+/// Verifica o Input
+function verificarPreenchimento() {
+    var inputValor = document.getElementById("demo4").value.trim();
+    var buttonsDiv = document.getElementById("buttons_div");
+
+    if (inputValor !== "" && parseFloat(inputValor.replace(/[^\d.]/g, '')) > 0) {
+        buttonsDiv.style.display = "block";
+    } else {
+        buttonsDiv.style.display = "none";
+    }
+}
 
 // // /// Imprimir Imagem ///
 // $(document).ready(function () {
@@ -493,3 +516,46 @@ function escreveripcell() {
 //         });
 //     });
 // });
+
+
+
+///Imprimir Imagem
+// /// Imprime a Imagem
+// $(document).ready(function () {
+//     $("#download").on("click", function () {
+//         var element = document.getElementById("htmlContent");
+
+//         // Define a largura e altura desejadas para a imagem em pixels
+//         var canvasWidth = 5900;
+//         var canvasHeight = 7000;
+
+//         // Calcula a escala com base na largura desejada do canvas e a largura do elemento
+//         var scale = canvasWidth / element.offsetWidth;
+
+//         // Cria um novo canvas com a resolução desejada
+//         var canvas = document.createElement("canvas");
+//         canvas.width = canvasWidth;
+//         canvas.height = canvasHeight;
+//         var context = canvas.getContext("2d");
+
+//         // Usa a biblioteca html2canvas para renderizar o conteúdo no canvas
+//         html2canvas(element, { scale: scale })
+//             .then(function (renderedCanvas) {
+//                 // Desenha a imagem renderizada no novo canvas
+//                 context.drawImage(renderedCanvas, 0, 0, canvasWidth, canvasHeight);
+
+//                 // Obtém a URL da imagem a partir do canvas
+//                 var imageData = canvas.toDataURL("image/jpeg", 1.0);
+
+//                 // Cria um link para baixar a imagem
+//                 var link = document.createElement("a");
+//                 link.setAttribute("download", "image.jpg");
+//                 link.setAttribute("href", imageData);
+//                 link.click();
+//             })
+//             .catch(function (error) {
+//                 console.error("Erro ao renderizar a imagem:", error);
+//             });
+//     });
+// });
+///
