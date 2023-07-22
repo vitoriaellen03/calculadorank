@@ -1,0 +1,438 @@
+/*Zerando CSS*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /*BODY*/
+  body {
+    scroll-behavior: smooth;
+    height: 100%;
+    width: auto;
+    background-color: #202020;
+    color: white;
+    font-family: 'Calibri';
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+    a:link {
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+    }
+  
+    a:hover {
+      color: rgb(255, 255, 255);
+    }
+  #ipmaq:hover{
+    color: #c9e93e;
+  }
+  #iplink:hover{
+    color: #1fff5e;
+  }
+  #ipcell:hover{
+    color: #44f52c;
+  }
+
+
+  /*Responsividade Notebooks e Computadores*/
+    @media screen and (max-width: 9880px) {
+      body {
+        margin-top: 80px;
+        justify-content: space-around;
+        justify-items: center;
+        text-align: center;
+        align-items: center;
+      }
+      
+      a{
+        cursor: pointer;
+      }
+
+      .sec1{
+        width: 100%;
+        height: 89vh;
+        padding: 1%;
+        justify-content: space-around;
+        justify-items: center;
+        text-align: center;
+        align-items: center;
+      }
+
+      .aling {
+        display: inline-flex;
+        gap: 1vw;
+      } 
+
+      .opcao{
+        display: inline;
+        padding: 8% 5%;
+        width:40vw;
+        height: 70vh;
+        border: 2px solid #009bdb;
+        border-radius: 5px;
+        overflow: hidden;
+        justify-content: space-around;
+        justify-items: center;
+        text-align: center;
+        align-items: center;
+      }
+      
+      .planilha{
+        width:40vw;
+        height: 70vh;
+        border: 2px solid #009bdb;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .butt{
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        display: block;
+        width: 100%;
+        padding: 0 25%;
+      }
+      .buton {
+        text-align: center;
+        align-items: center;
+        display: block;
+        cursor: pointer;
+        padding: 1%;
+        border-radius: 5px;
+        border: 2px solid;
+        margin: 5%;
+      }
+      .btn{
+        width: 40vw;
+        background-color: #009bdb;
+        padding: 1%;
+        position: absolute;
+        margin: 71vh 0;
+      }
+      .btn:hover{
+        background-color: #055e85;
+      }
+      #download{
+        margin-left: 41vw;
+      }
+      #htmlContent{
+        display: block;
+        justify-content: space-around;
+        background-color: #009bdb;
+        height: 100%;
+      }
+      .plan{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        justify-content: space-around;
+        border-collapse: collapse;
+        font-size: 26px;
+      }
+      th{
+        background-color: #009bdb;
+      }
+      td{
+        border: 1px solid #009bdb;
+      }
+      .deb{
+        background-color: rgb(84, 215, 238);
+      }
+      .num{
+        background-color: white;
+        color: #009bdb;
+      }
+    }
+
+
+    /*Responsividade Tablets e Celulares*/
+      @media screen and (max-width: 990px) {
+        /*Body e alinhamento*/
+          .nav-aling{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 25vw;
+          }
+        /**/
+        
+        /*MAIN Conteúdo principal*/
+          sec1{
+              padding: 1%;
+              margin: 1% 1% 0 0;
+              height: auto;
+            }
+            .aling {
+              justify-content: space-around;
+              justify-items: center;
+              align-items: center;
+              display: block;
+              
+            }           
+            .opcao{
+              width: 80vw;
+              height: 50vh;
+              display: block;
+              padding: 8% 5%;
+              overflow: hidden;
+              margin-left: 9%;
+            }
+            .planilha{
+              width: 80vw;
+              height: 70vh;
+              display: block;
+              overflow: hidden;
+              margin-left: 9%;
+            }
+            .btn{
+              width: 80vw;
+              height: 7vh;
+              background-color: #009bdb;
+              display: block;
+              margin: 1% 8.9%;
+              padding: 3%;
+              position: relative;
+              text-align: center;
+              font-size: 3vh;
+              text-transform: none;
+            }
+            #download{
+              width: 80vw;
+              height: 7vh;
+              display: block;
+              margin: 1% 8.9%;
+              padding: 3%;
+              position: relative;
+              text-align: center;
+              font-size: 3vh;
+              text-transform: none;
+            }
+
+            .butt{
+              align-items: center;
+              justify-content: center;
+              justify-items: center;
+              display: block;
+              width: 100%;
+              padding: 0 25%;
+            }
+            .buton {
+              text-align: center;
+              align-items: center;
+              display: block;
+              cursor: pointer;
+              padding: 1%;
+              border-radius: 5px;
+              border: 2px solid;
+              margin: 1%;
+              width: 100%;
+            }
+        /**/
+
+      }
+
+    /**/
+          
+/*HEADER GERAL*/
+
+
+/*ALINHAMENTO GERAL nav-bar*/
+  /*NAV-BAR PCS E NOTEBOOKS*/
+  .nav-aling{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+  .nav-bar {
+    background-color: #009bdb;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75px;
+  }
+  .nav-list {
+    list-style: none;
+    display: flex;
+  }
+
+  .nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+  }
+  /**/
+
+
+  /*NAV-BAR MOBILE*/        
+      .mobile-menu {
+        display: none;
+        cursor: pointer;
+      }
+          
+      .mobile-menu div {
+        width: 32px;
+        height: 2px;
+        background: #fff;
+        margin: 8px;
+        transition: 0.3s;
+      }
+  
+
+      
+  @media (max-width: 900px) {
+    body {
+      overflow-x: hidden;
+    }
+
+    .nav-list li {
+      margin-left: 0;
+      opacity: 0;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+  
+  .nav-list.active {
+    transform: translateX(0);
+  }
+  
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+  }
+  
+  .mobile-menu.active .line2 {
+    opacity: 0;
+  }
+  
+  .mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
+
+
+  .nav-bar{
+    position: fixed;
+    display: flex;
+    top: 0;  
+    width: 100%;
+    height: 75px;
+    align-items: center;
+    justify-content: space-around;
+  }
+  /**/
+/**/
+
+
+/*Menu De Opções - GERAL*/
+.select-menu {
+  width: 100%;
+}
+.select-menu .select-btn {
+  display: flex;
+  background: #202020;
+  border: 2px solid #009bdb;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.select-btn i {
+  font-size: 25px;
+  transition: 0.3s;
+}
+.select-menu.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.select-menu .options {
+  padding: 5px;
+  margin-top: -8px;
+  border-radius: 0px 0px 8px 8px;
+  background: #202020;
+  border: 2px solid #009bdb;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.select-menu.active .options {
+  display: block;
+}
+.options .option {
+  display: flex;
+  height: 55px;
+  cursor: pointer;
+  padding: 0 16px;
+  border-radius: 8px;
+  align-items: center;
+  background: #202020;
+}
+.options .option:hover {
+  background: #444444;
+  color: #0de048;
+}
+.option i {
+  font-size: 32px;
+  margin-right: 12px;
+}
+.option .option-text {
+  font-size: 18px;
+}
+.mp{
+  width: 35px;
+  margin-right: 12px;
+}
+
+#mp:hover{
+  color: #009bdb;
+}
+/**/
+
+/*Texto input*/
+.input-field{
+  align-items: center;
+  justify-content: center;
+}
+.valor{
+  font-family: 'Calibri';
+  font-weight: bold;
+  color: rgb(224, 224, 224);
+  background-color: #202020;
+  border: none;
+  font-size: 6vh;
+  width: 100%;
+  text-align: center;
+  margin-top: 5%;
+}
+.valor::placeholder {
+  color: white;
+}
+.valor:hover::placeholder{
+  color: #5e5e5e;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.digite{
+  color: #77d0f7;
+  text-transform: none;
+  margin-top: 5%;
+}

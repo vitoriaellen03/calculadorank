@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>NK Informatica</title>
+    <link rel="shortcut icon" href="./assets/img/logo.png" type="image/x-icon">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script async src="script.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js">
+    </script>
+    
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    
+
+</head>
+
+<body>
+<header>
+    <nav id="nav" class="nav-bar">
+    <h1>NK Informatica</h1>
+    <div class="nav-aling">
+    </div>    
+    </nav>
+</header>
+
+<main>
+<div class="main-aling">
+    <section class="sec1">
+        <div class="aling">
+
+            <div id ="opcao" class="opcao">
+
+                <div id="input_box">
+                    <div class="input-field" class="inp">
+                        <h1 class="digite" id="digite">Digite o valor da venda:</h1><br>
+                        <input type="text" class="valor" id="demo4" data-decimal="." data-thousands="" data-prefix="R$ " placeholder="R$ 0.00" onkeyup="verificarPreenchimento()" onkeydown="verificarPreenchimento()" oninput="verificarPreenchimento()">
+                    </div>
+                </div>
+                <br>
+
+                <div id="buttons_div" style="display: none;">
+                    <h1 class="digite" id="digite2">Selecione um banco:</h1><br>
+                    <div class="butt">
+                        <a class="buton" id="mp" value="mp" onclick="escrevermp()">Mercado Pago</a>
+                        <a class="buton" id="ipmaq" value="ipmaq" onclick="escreveripmaq()">Infinite Pay (Maq.)</a>
+                        <a class="buton" id="iplink" value="iplink" onclick="escreveriplink()">Infinite Pay (Link)</a>
+                        <a class="buton" id="ipcell" value="ipcell" onclick="escreveripcell()">Infinite Pay (Celular)</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <a id="download" class="btn">Baixar Imagem</a>
+            <div id="planilha" class="planilha">
+                <div id="htmlContent">
+                <table class="plan">
+                    <tr>
+                        <th colspan="3"><h1>Pague No Cartão </h1></th>
+                    </tr>
+                    <tr class="deb">
+                        <td id="valorde1">Débito</td>
+                        <td id="valorde">R$ 0.00</td>
+                        <td id="valordeb">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te1">1</td>
+                        <td id="valorjur1">R$ 0.00</td>
+                        <td id="valorjuru1">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te2">2</td>
+                        <td id="valorjur2">R$ 0.00</td>
+                        <td id="valorjuru2">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te3">3</td>
+                        <td id="valorjur3">R$ 0.00</td>
+                        <td id="valorjuru3">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te4">4</td>
+                        <td id="valorjur4">R$ 0.00</td>
+                        <td id="valorjuru4">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te5">5</td>
+                        <td id="valorjur5">R$ 0.00</td>
+                        <td id="valorjuru5">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te6">6</td>
+                        <td id="valorjur6">R$ 0.00</td>
+                        <td id="valorjuru6">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te7">7</td>
+                        <td id="valorjur7">R$ 0.00</td>
+                        <td id="valorjuru7">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te8">8</td>
+                        <td id="valorjur8">R$ 0.00</td>
+                        <td id="valorjuru8">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te9">9</td>
+                        <td id="valorjur9">R$ 0.00</td>
+                        <td id="valorjuru9">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te10">10</td>
+                        <td id="valorjur10">R$ 0.00</td>
+                        <td id="valorjuru10">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te11">11</td>
+                        <td id="valorjur11">R$ 0.00</td>
+                        <td id="valorjuru11">R$ 0.00</td>
+                    </tr>
+                    
+                    <tr class="num">
+                        <td id="te12">12</td>
+                        <td id="valorjur12">R$ 0.00</td>
+                        <td id="valorjuru12">R$ 0.00</td>
+                    </tr>
+                </table>
+                
+                </div>        
+            </div>
+
+            <br><br>
+
+        </div>
+    </div>
+    </section>
+
+</div>
+</div> 
+
+</main>
+</body>
+
+</html>
