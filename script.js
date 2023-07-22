@@ -5,7 +5,7 @@ $(document).ready(function () {
 
         // Define a largura e altura desejadas para a imagem em pixels
         var canvasWidth = 5000;
-        var canvasHeight = 5000;
+        var canvasHeight = 7000;
 
         // Cria um novo canvas com a resolução desejada
         var canvas = document.createElement("canvas");
