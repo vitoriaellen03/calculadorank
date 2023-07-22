@@ -1,59 +1,4 @@
-/// Imprimir Imagem ///
-$(document).ready(function () {
-    $("#download").on("click", function () {
-        var element = document.getElementById("htmlContent");
-
-        // Define a largura e altura desejadas para a imagem em pixels
-        var canvasWidth = 5000;
-        var canvasHeight = 7000;
-
-        // Cria um novo canvas com a resolução desejada
-        var canvas = document.createElement("canvas");
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
-        var context = canvas.getContext("2d");
-
-        // Usa a biblioteca html2canvas para renderizar o conteúdo no canvas
-        html2canvas(element, { scale: canvasWidth / element.offsetWidth })
-            .then(function (renderedCanvas) {
-                // Desenha a imagem renderizada no novo canvas
-                context.drawImage(renderedCanvas, 0, 0, canvasWidth, canvasHeight);
-
-                // Obtém a URL da imagem a partir do canvas
-                var imageData = canvas.toDataURL("image/jpeg", 1.0);
-
-                // Cria um link para baixar a imagem
-                var link = document.createElement("a");
-                link.setAttribute("download", "image.jpg");
-                link.setAttribute("href", imageData);
-                link.click();
-            })
-            .catch(function (error) {
-                console.error("Erro ao renderizar a imagem:", error);
-            });
-    });
-});
-
-
-/// Mascara de Dinheiro
-$(function () {
-    $("#demo4").maskMoney();
-}) 
-
-/// Verifica o Input
-function verificarPreenchimento() {
-    var inputValor = document.getElementById("demo4").value.trim();
-    var buttonsDiv = document.getElementById("buttons_div");
-
-    if (inputValor !== "" && parseFloat(inputValor.replace(/[^\d.]/g, '')) > 0) {
-        buttonsDiv.style.display = "block";
-    } else {
-        buttonsDiv.style.display = "none";
-    }
-}
-
 //Importar Variaveis
-var nav = document.getElementById('nav');
 var opcao = document.getElementById('opcao');
 var planilha = document.getElementById('planilha');
 var btn = document.getElementById('download');
@@ -110,95 +55,162 @@ var te11 = document.getElementById('te11');
 var te12 = document.getElementById('te12');
 
 
-/// Escreve os Valores MERCADO PAGO ///
-function escrevermp() {
-    const valorTexto = document.getElementById('demo4').value;
-    const valorNumerico = parseFloat(valorTexto.replace(/[^\d]/g, '')) / 100;
+/// Carrega os codigos apos tudo ser carregado
+document.addEventListener('DOMContentLoaded', function () {
+    escreveripmaq();
+    escreveriplink();
+    escreveripcell();
+    escrevermp();
+});
 
-    document.getElementById('valorde').innerHTML = "R$ " + (valorNumerico / 0.971).toFixed(2);
-    document.getElementById('valorjur1').innerHTML = "R$ " +((valorNumerico / 0.938) / 1).toFixed(2);
-    document.getElementById('valorjur2').innerHTML = "R$ " +((valorNumerico / 0.901) / 2).toFixed(2);
-    document.getElementById('valorjur3').innerHTML = "R$ " +((valorNumerico / 0.887) / 3).toFixed(2);
-    document.getElementById('valorjur4').innerHTML = "R$ " +((valorNumerico / 0.874) / 4).toFixed(2);
-    document.getElementById('valorjur5').innerHTML = "R$ " +((valorNumerico / 0.86) / 5).toFixed(2);
-    document.getElementById('valorjur6').innerHTML = "R$ " +((valorNumerico / 0.847) / 6).toFixed(2);
-    document.getElementById('valorjur7').innerHTML = "R$ " +((valorNumerico / 0.834) / 7).toFixed(2);
-    document.getElementById('valorjur8').innerHTML = "R$ " +((valorNumerico / 0.861) / 8).toFixed(2);
-    document.getElementById('valorjur9').innerHTML = "R$ " +((valorNumerico / 0.81) / 9).toFixed(2);
-    document.getElementById('valorjur10').innerHTML = "R$ " +((valorNumerico / 0.798) / 10).toFixed(2);
-    document.getElementById('valorjur11').innerHTML = "R$ " +((valorNumerico / 0.786) / 11).toFixed(2);
-    document.getElementById('valorjur12').innerHTML = "R$ " +((valorNumerico / 0.774) / 12).toFixed(2);
+/// Imprimir Imagem ///
+$(document).ready(function () {
+    $("#download").on("click", function () {
+        var element = document.getElementById("htmlContent");
 
-    document.getElementById('valordeb').innerHTML = "R$ " +(valorNumerico / 0.971).toFixed(2);
-    document.getElementById('valorjuru1').innerHTML = "R$ " +(valorNumerico / 0.938).toFixed(2);
-    document.getElementById('valorjuru2').innerHTML = "R$ " +(valorNumerico / 0.901).toFixed(2);
-    document.getElementById('valorjuru3').innerHTML = "R$ " +(valorNumerico / 0.887).toFixed(2);
-    document.getElementById('valorjuru4').innerHTML = "R$ " +(valorNumerico / 0.874).toFixed(2);
-    document.getElementById('valorjuru5').innerHTML = "R$ " +(valorNumerico / 0.86).toFixed(2);
-    document.getElementById('valorjuru6').innerHTML = "R$ " +(valorNumerico / 0.847).toFixed(2);
-    document.getElementById('valorjuru7').innerHTML = "R$ " +(valorNumerico / 0.834).toFixed(2);
-    document.getElementById('valorjuru8').innerHTML = "R$ " +(valorNumerico / 0.861).toFixed(2);
-    document.getElementById('valorjuru9').innerHTML = "R$ " +(valorNumerico / 0.81).toFixed(2);
-    document.getElementById('valorjuru10').innerHTML = "R$ " +(valorNumerico / 0.798).toFixed(2);
-    document.getElementById('valorjuru11').innerHTML = "R$ " +(valorNumerico / 0.786).toFixed(2);
-    document.getElementById('valorjuru12').innerHTML = "R$ " + (valorNumerico / 0.774).toFixed(2);
-    
-    nav.style = "background-color: #009bdb;"; // Nav bar
-    btn.style = "background-color: #009bdb;"; // Botão Baixar
-    html.style = "background-color: #009bdb;"; // Conteudo Da Planilha
-    titulo.style = "background-color: #009bdb;"; // Titulo Da Planilha
-    opcao.style = "border: 2px solid #009bdb;"; // Borda Calculadora
-    planilha.style = "border: 2px solid #009bdb;";// Borda da planilha
-    dg.style = "color: #009bdb;";
-    dg2.style = "color: #009bdb;";
+        // Define a largura e altura desejadas para a imagem em pixels
+        var canvasWidth = 5900;
+        var canvasHeight = 7000;
+
+        // Calcula a escala com base na largura desejada do canvas e a largura do elemento
+        var scale = canvasWidth / element.offsetWidth;
+
+        // Cria um novo canvas com a resolução desejada
+        var canvas = document.createElement("canvas");
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var context = canvas.getContext("2d");
+
+        // Usa a biblioteca html2canvas para renderizar o conteúdo no canvas
+        html2canvas(element, { scale: scale })
+            .then(function (renderedCanvas) {
+                // Desenha a imagem renderizada no novo canvas
+                context.drawImage(renderedCanvas, 0, 0, canvasWidth, canvasHeight);
+
+                // Obtém a URL da imagem a partir do canvas
+                var imageData = canvas.toDataURL("image/jpeg", 1.0);
+
+                // Cria um link para baixar a imagem
+                var link = document.createElement("a");
+                link.setAttribute("download", "image.jpg");
+                link.setAttribute("href", imageData);
+                link.click();
+            })
+            .catch(function (error) {
+                console.error("Erro ao renderizar a imagem:", error);
+            });
+    });
+});
 
 
-    // Debito
-    valorde1.style = "background-color: #a2cff0; border: 2px solid #009bdb;";
-    valorde.style = "background-color: #a2cff0; border: 2px solid #009bdb;";
-    valordeb.style = "background-color: #a2cff0; border: 2px solid #009bdb;";
+/// Mascara de Dinheiro
+$(function () {
+    $("#demo4").maskMoney();
+}) 
 
-    // Crédito
-    linha1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
+/// Verifica o Input
+function verificarPreenchimento() {
+    var inputValor = document.getElementById("demo4").value.trim();
+    var buttonsDiv = document.getElementById("buttons_div");
 
-    linha13.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha14.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha15.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha16.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha17.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha18.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha19.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha20.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha21.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha22.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha23.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    linha24.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-
-    te1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-    te12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;";
-
+    if (inputValor !== "" && parseFloat(inputValor.replace(/[^\d.]/g, '')) > 0) {
+        buttonsDiv.style.display = "block";
+    } else {
+        buttonsDiv.style.display = "none";
+    }
 }
+
+
+    /// Escreve os Valores MERCADO PAGO ///
+    function escrevermp() {
+        const valorTexto = document.getElementById('demo4').value;
+        const valorNumerico = parseFloat(valorTexto.replace(/[^\d]/g, '')) / 100;
+
+        document.getElementById('valorde').innerHTML = "R$ " + (valorNumerico / 0.971).toFixed(2);
+        document.getElementById('valorjur1').innerHTML = "R$ " + ((valorNumerico / 0.938) / 1).toFixed(2);
+        document.getElementById('valorjur2').innerHTML = "R$ " + ((valorNumerico / 0.901) / 2).toFixed(2);
+        document.getElementById('valorjur3').innerHTML = "R$ " + ((valorNumerico / 0.887) / 3).toFixed(2);
+        document.getElementById('valorjur4').innerHTML = "R$ " + ((valorNumerico / 0.874) / 4).toFixed(2);
+        document.getElementById('valorjur5').innerHTML = "R$ " + ((valorNumerico / 0.86) / 5).toFixed(2);
+        document.getElementById('valorjur6').innerHTML = "R$ " + ((valorNumerico / 0.847) / 6).toFixed(2);
+        document.getElementById('valorjur7').innerHTML = "R$ " + ((valorNumerico / 0.834) / 7).toFixed(2);
+        document.getElementById('valorjur8').innerHTML = "R$ " + ((valorNumerico / 0.861) / 8).toFixed(2);
+        document.getElementById('valorjur9').innerHTML = "R$ " + ((valorNumerico / 0.81) / 9).toFixed(2);
+        document.getElementById('valorjur10').innerHTML = "R$ " + ((valorNumerico / 0.798) / 10).toFixed(2);
+        document.getElementById('valorjur11').innerHTML = "R$ " + ((valorNumerico / 0.786) / 11).toFixed(2);
+        document.getElementById('valorjur12').innerHTML = "R$ " + ((valorNumerico / 0.774) / 12).toFixed(2);
+
+        document.getElementById('valordeb').innerHTML = "R$ " + (valorNumerico / 0.971).toFixed(2);
+        document.getElementById('valorjuru1').innerHTML = "R$ " + (valorNumerico / 0.938).toFixed(2);
+        document.getElementById('valorjuru2').innerHTML = "R$ " + (valorNumerico / 0.901).toFixed(2);
+        document.getElementById('valorjuru3').innerHTML = "R$ " + (valorNumerico / 0.887).toFixed(2);
+        document.getElementById('valorjuru4').innerHTML = "R$ " + (valorNumerico / 0.874).toFixed(2);
+        document.getElementById('valorjuru5').innerHTML = "R$ " + (valorNumerico / 0.86).toFixed(2);
+        document.getElementById('valorjuru6').innerHTML = "R$ " + (valorNumerico / 0.847).toFixed(2);
+        document.getElementById('valorjuru7').innerHTML = "R$ " + (valorNumerico / 0.834).toFixed(2);
+        document.getElementById('valorjuru8').innerHTML = "R$ " + (valorNumerico / 0.861).toFixed(2);
+        document.getElementById('valorjuru9').innerHTML = "R$ " + (valorNumerico / 0.81).toFixed(2);
+        document.getElementById('valorjuru10').innerHTML = "R$ " + (valorNumerico / 0.798).toFixed(2);
+        document.getElementById('valorjuru11').innerHTML = "R$ " + (valorNumerico / 0.786).toFixed(2);
+        document.getElementById('valorjuru12').innerHTML = "R$ " + (valorNumerico / 0.774).toFixed(2);
+
+        nav.style = "background-color: #009bdb;" // Nav bar
+        btn.style = "background-color: #009bdb;" // Botão Baixar
+        html.style = "background-color: #009bdb;" // Conteudo Da Planilha
+        titulo.style = "background-color: #009bdb;" // Titulo Da Planilha
+        opcao.style = "border: 2px solid #009bdb;" // Borda Calculadora
+        planilha.style = "border: 2px solid #009bdb;"// Borda da planilha
+        dg.style = "color: #009bdb;"
+        dg2.style = "color: #009bdb;"
+
+
+        // Debito
+        valorde1.style = "background-color: #a2cff0; border: 2px solid #009bdb;"
+        valorde.style = "background-color: #a2cff0; border: 2px solid #009bdb;"
+        valordeb.style = "background-color: #a2cff0; border: 2px solid #009bdb;"
+
+        // Crédito
+        linha1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+
+        linha13.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha14.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha15.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha16.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha17.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha18.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha19.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha20.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha21.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha22.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha23.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        linha24.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+
+        te1.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te2.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te3.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te4.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te5.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te6.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te7.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te8.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te9.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te10.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te11.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+        te12.style = "border: 2px solid #009bdb; background-color: white; border: 2px solid #009bdb; color: #009bdb;"
+
+    }
+
 
 function escreveripmaq() {
     const valorTexto = document.getElementById('demo4').value;
@@ -462,7 +474,7 @@ function escreveripcell() {
     te11.style = "border: 2px solid #12c35b; background-color: white; border: 2px solid #12c35b; color: #12c35b;";
     te12.style = "border: 2px solid #12c35b; background-color: white; border: 2px solid #12c35b; color: #12c35b;";
 
-}
+    }
 
 // // /// Imprimir Imagem ///
 // $(document).ready(function () {
@@ -481,4 +493,3 @@ function escreveripcell() {
 //         });
 //     });
 // });
-///

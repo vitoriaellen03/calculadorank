@@ -290,9 +290,39 @@
         /**/
 
       }
-
     /**/
-          
+
+    /* Celulares de tela grande */
+    @media screen and (max-width: 480px) {
+      #htmlContent{
+              display: block;
+              justify-content: space-around;
+              background-color: #009bdb;
+              height: auto;
+      }
+      .plan{
+              width: 100%;
+              height: auto;
+              text-align: center;
+              justify-content: space-around;
+              border-collapse: collapse;
+              font-size: 18px;
+      }
+      th{
+              background-color: #009bdb;
+              width: 100%;
+      }
+      td{
+        border: 0.01em solid #009bdb;
+      }
+      .deb{
+        background-color: rgb(84, 215, 238);
+      }
+      .num{
+        background-color: white;
+        color: #009bdb;
+      }
+    }
 /*HEADER GERAL*/
 
 
